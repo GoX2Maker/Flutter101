@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bluetooth_test/utils/extra.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
@@ -86,6 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+  void onConnectPressed(BluetoothDevice device) {
+    device.connectAndUpdateStream().catchError((e) {
+      print("Connect Error: $e");
+    });
+    // MaterialPageRoute route = MaterialPageRoute(
+    //     builder: (context) => DeviceScreen(device: device), settings: RouteSettings(name: '/DeviceScreen'));
+    // Navigator.of(context).push(route);
+  }
+
   Future onScanPressed() async {
     try {
       await FlutterBluePlus.startScan(timeout: const Duration(seconds: 15));
@@ -128,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .map(
           (r) => ScanResultTile(
             result: r,
-            //onTap: () => onConnectPressed(r.device),
+            onTap: () => onConnectPressed(r.device),
           ),
         )
         .toList();
