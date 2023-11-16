@@ -15,6 +15,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   final Curve _scrollCurve = Curves.linear;
 
   void _onVideoFiished() {
+    return;
     _pageController.nextPage(
       duration: _scrollDuration,
       curve: _scrollCurve,
@@ -36,16 +37,25 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
     }
   }
 
+  Future<void> _onRefresh() async {
+    await Future.delayed(const Duration(seconds: 5));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      onPageChanged: _onPageChanged,
-      itemCount: _itemCount,
-      scrollDirection: Axis.vertical,
-      itemBuilder: (context, index) => VideoPost(
-        onVideoFinished: _onVideoFiished,
-        index: index,
+    return RefreshIndicator(
+      displacement: 50,
+      edgeOffset: 20,
+      onRefresh: _onRefresh,
+      child: PageView.builder(
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        itemCount: _itemCount,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) => VideoPost(
+          onVideoFinished: _onVideoFiished,
+          index: index,
+        ),
       ),
     );
   }
