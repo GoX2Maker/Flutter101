@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class PostVideoButton extends StatelessWidget {
-  const PostVideoButton({super.key});
+  final int selectedIndex;
+  const PostVideoButton({super.key, required this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +48,19 @@ class PostVideoButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             horizontal: Sizes.size12,
           ),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
+          decoration: BoxDecoration(
+            color: selectedIndex == 0 ? Colors.white : Colors.black,
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 Sizes.size6,
               ),
             ),
           ),
-          child: const Center(
+          child: Center(
             child: FaIcon(
               FontAwesomeIcons.plus,
               size: 18,
-              color: Colors.black,
+              color: selectedIndex == 0 ? Colors.black : Colors.white,
             ),
           ),
         )

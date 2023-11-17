@@ -1,0 +1,128 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "bluetooth_test",
+            "cwd": "bluetooth_test",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "bluetooth_test (profile mode)",
+            "cwd": "bluetooth_test",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "bluetooth_test (release mode)",
+            "cwd": "bluetooth_test",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "pomo",
+            "cwd": "pomo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "pomo (profile mode)",
+            "cwd": "pomo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "pomo (release mode)",
+            "cwd": "pomo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "tiktok_clone",
+            "cwd": "tiktok_clone",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "tiktok_clone (profile mode)",
+            "cwd": "tiktok_clone",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tiktok_clone (release mode)",
+            "cwd": "tiktok_clone",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "toonflix",
+            "cwd": "toonflix",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "toonflix (profile mode)",
+            "cwd": "toonflix",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "toonflix (release mode)",
+            "cwd": "toonflix",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "toonflix2",
+            "cwd": "toonflix2",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "toonflix2 (profile mode)",
+            "cwd": "toonflix2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "toonflix2 (release mode)",
+            "cwd": "toonflix2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "widget101",
+            "cwd": "widget101",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "widget101 (profile mode)",
+            "cwd": "widget101",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "widget101 (release mode)",
+            "cwd": "widget101",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
