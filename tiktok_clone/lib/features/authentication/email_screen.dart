@@ -16,8 +16,6 @@ class EmailScreenArgs {
 }
 
 class EmailScreen extends StatefulWidget {
-  static String routeURL = "email";
-  static String routeName = "email";
   final String username;
 
   const EmailScreen({
@@ -32,7 +30,6 @@ class EmailScreen extends StatefulWidget {
 class _EmailScreenState extends State<EmailScreen> {
   final TextEditingController _emailController = TextEditingController();
   String _email = "";
-
   @override
   void initState() {
     super.initState();
@@ -51,11 +48,9 @@ class _EmailScreenState extends State<EmailScreen> {
 
   String? _isEmailValid() {
     if (_email.isEmpty) return null;
-
-    //perform some val.
-    final emailRegex = RegExp(
+    final regExp = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    if (!emailRegex.hasMatch(_email)) {
+    if (!regExp.hasMatch(_email)) {
       return "Email not valid";
     }
     return null;
@@ -67,10 +62,12 @@ class _EmailScreenState extends State<EmailScreen> {
 
   void _onSubmit() {
     if (_email.isEmpty || _isEmailValid() != null) return;
-
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const PasswordScreen(),
-    ));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
+      ),
+    );
   }
 
   @override
@@ -80,7 +77,7 @@ class _EmailScreenState extends State<EmailScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Sign Up",
+            "Sign up",
           ),
         ),
         body: Padding(
@@ -92,7 +89,7 @@ class _EmailScreenState extends State<EmailScreen> {
             children: [
               Gaps.v40,
               Text(
-                "What's your email, ${widget.username}?",
+                "What is your email, ${widget.username}?",
                 style: const TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
@@ -100,11 +97,10 @@ class _EmailScreenState extends State<EmailScreen> {
               ),
               Gaps.v16,
               TextField(
-                onEditingComplete: _onSubmit,
-                keyboardType: TextInputType.emailAddress,
-                autocorrect: false,
                 controller: _emailController,
-                cursorColor: Theme.of(context).primaryColor,
+                keyboardType: TextInputType.emailAddress,
+                onEditingComplete: _onSubmit,
+                autocorrect: false,
                 decoration: InputDecoration(
                   hintText: "Email",
                   errorText: _isEmailValid(),
@@ -119,12 +115,15 @@ class _EmailScreenState extends State<EmailScreen> {
                     ),
                   ),
                 ),
+                cursorColor: Theme.of(context).primaryColor,
               ),
-              Gaps.v16,
+              Gaps.v28,
               GestureDetector(
-                  onTap: _onSubmit,
-                  child: FormButton(
-                      disabled: _email.isEmpty || _isEmailValid() != null)),
+                onTap: _onSubmit,
+                child: FormButton(
+                  disabled: _email.isEmpty || _isEmailValid() != null,
+                ),
+              ),
             ],
           ),
         ),

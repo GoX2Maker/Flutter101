@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 
 import 'package:tiktok_clone/constants/sizes.dart';
@@ -22,7 +23,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   void initState() {
     super.initState();
 
-    _setTextFildDate(initialDate);
+    _setTextFieldDate(initialDate);
   }
 
   @override
@@ -32,19 +33,12 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => const InterestsScreen(),
-        ), (route) {
-      return false;
-    });
+    context.goNamed(InterestsScreen.routeName);
   }
 
-  void _setTextFildDate(DateTime date) {
-    final textDate = date.toString().split(' ').first;
-    _birthdayController.value = TextEditingValue(
-      text: textDate,
-    );
+  void _setTextFieldDate(DateTime date) {
+    final textDate = date.toString().split(" ").first;
+    _birthdayController.value = TextEditingValue(text: textDate);
   }
 
   @override
@@ -52,7 +46,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Sign Up",
+          "Sign up",
         ),
       ),
       body: Padding(
@@ -64,7 +58,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
           children: [
             Gaps.v40,
             const Text(
-              "What's your birthday?",
+              "When's your birthday?",
               style: TextStyle(
                 fontSize: Sizes.size24,
                 fontWeight: FontWeight.w700,
@@ -72,7 +66,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             ),
             Gaps.v8,
             const Text(
-              "Your birthdya won't be shown publicly.",
+              "Your birthday won't be shown publicly.",
               style: TextStyle(
                 fontSize: Sizes.size16,
                 color: Colors.black54,
@@ -82,7 +76,6 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             TextField(
               enabled: false,
               controller: _birthdayController,
-              cursorColor: Theme.of(context).primaryColor,
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -95,24 +88,23 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                   ),
                 ),
               ),
+              cursorColor: Theme.of(context).primaryColor,
             ),
-            Gaps.v16,
+            Gaps.v28,
             GestureDetector(
-              onTap: () => _onNextTap(),
+              onTap: _onNextTap,
               child: const FormButton(disabled: false),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: SizedBox(
-          height: 300,
-          child: CupertinoDatePicker(
-            maximumDate: initialDate,
-            initialDateTime: initialDate,
-            mode: CupertinoDatePickerMode.date,
-            onDateTimeChanged: _setTextFildDate,
-          ),
+      bottomNavigationBar: SizedBox(
+        height: 300,
+        child: CupertinoDatePicker(
+          maximumDate: initialDate,
+          initialDateTime: initialDate,
+          mode: CupertinoDatePickerMode.date,
+          onDateTimeChanged: _setTextFieldDate,
         ),
       ),
     );

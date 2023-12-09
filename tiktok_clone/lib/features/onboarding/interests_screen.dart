@@ -46,6 +46,8 @@ const interests = [
 ];
 
 class InterestsScreen extends StatefulWidget {
+  static const String routeName = "interests";
+  static const String routeURL = "/tutorial";
   const InterestsScreen({super.key});
 
   @override
@@ -54,29 +56,32 @@ class InterestsScreen extends StatefulWidget {
 
 class _InterestsScreenState extends State<InterestsScreen> {
   final ScrollController _scrollController = ScrollController();
-
   bool _showTitle = false;
-
   void _onScroll() {
-    if (_scrollController.offset > 70) {
+    if (_scrollController.offset > 100) {
       if (_showTitle) return;
-      _showTitle = true;
+      setState(() {
+        _showTitle = true;
+      });
     } else {
-      _showTitle = false;
+      setState(() {
+        _showTitle = false;
+      });
     }
-
-    setState(() {});
   }
 
   void _onNextTap() {
-    Navigator.push((context),
-        MaterialPageRoute(builder: (context) => const TutorialScreen()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const TutorialScreen(),
+      ),
+    );
   }
 
   @override
   void initState() {
     super.initState();
-
     _scrollController.addListener(_onScroll);
   }
 
@@ -124,7 +129,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                     fontSize: Sizes.size20,
                   ),
                 ),
-                Gaps.v64,
+                Gaps.v48,
                 Wrap(
                   runSpacing: 15,
                   spacing: 15,
@@ -138,31 +143,29 @@ class _InterestsScreenState extends State<InterestsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            bottom: Sizes.size40,
-            top: Sizes.size16,
-            left: Sizes.size24,
-            right: Sizes.size24,
-          ),
-          child: GestureDetector(
-            onTap: _onNextTap,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: Sizes.size20,
-              ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: const Text(
-                "Next",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: Sizes.size16,
-                ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          bottom: Sizes.size40,
+          top: Sizes.size16,
+          left: Sizes.size24,
+          right: Sizes.size24,
+        ),
+        child: GestureDetector(
+          onTap: _onNextTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: Sizes.size16 + Sizes.size2,
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+            child: const Text(
+              'Next',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: Sizes.size16,
               ),
             ),
           ),

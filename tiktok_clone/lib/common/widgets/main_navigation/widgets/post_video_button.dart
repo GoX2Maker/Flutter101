@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class PostVideoButton extends StatelessWidget {
-  final int selectedIndex;
-  const PostVideoButton({super.key, required this.selectedIndex});
+  const PostVideoButton({super.key, required this.inverted});
+
+  final bool inverted;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -20,7 +23,7 @@ class PostVideoButton extends StatelessWidget {
               horizontal: Sizes.size8,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xff61d4f0),
+              color: const Color(0xff61D4F0),
               borderRadius: BorderRadius.circular(
                 Sizes.size8,
               ),
@@ -49,18 +52,16 @@ class PostVideoButton extends StatelessWidget {
             horizontal: Sizes.size12,
           ),
           decoration: BoxDecoration(
-            color: selectedIndex == 0 ? Colors.white : Colors.black,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(
-                Sizes.size6,
-              ),
+            color: !inverted || isDark ? Colors.white : Colors.black,
+            borderRadius: BorderRadius.circular(
+              Sizes.size6,
             ),
           ),
           child: Center(
             child: FaIcon(
               FontAwesomeIcons.plus,
+              color: !inverted || isDark ? Colors.black : Colors.white,
               size: 18,
-              color: selectedIndex == 0 ? Colors.black : Colors.white,
             ),
           ),
         )

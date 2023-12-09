@@ -232,7 +232,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         aspectRatio: 9 / 14,
                         child: FadeInImage.assetNetwork(
                           fit: BoxFit.cover,
-                          placeholder: "assets/images/placeholder.jpg",
+                          placeholder: "assets/images/cat0.jpg",
                           image:
                               "https://eadn-wc01-6453665.nxedge.io/cdn/wp-content/uploads/2020/10/building-with-trees-on-every-balcony-what-is-green-building-1024x682.jpg",
                         ),
