@@ -1,12 +1,16 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 class VideoConfig extends ChangeNotifier {
-  bool autoMute = true;
+  bool isMuted = false;
+  bool isAutoplay = false;
 
-  void toggleAutoMute() {
-    autoMute = !autoMute;
+  void toggleIsMuted() {
+    isMuted = !isMuted;
+    notifyListeners();
+  }
+
+  void toggleAutoplay() {
+    isAutoplay = !isAutoplay;
     notifyListeners();
   }
 }
-
-final videoConfig = VideoConfig();
